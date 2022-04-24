@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  CSV2JSON:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: csv_2_json/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Timeout: 60
+      Policies: 
+        - AWSLambdaExecute
+        - AmazonS3FullAccess
+  JSON2Image:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: json_2_image/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Timeout: 60
+      Policies: 
+        - AWSLambdaExecute
+        - AmazonS3FullAccess
+  ZIPEXTRACT:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: zip_extract/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Timeout: 60
+      Policies: 
+        - AWSLambdaExecute
+        - AmazonS3FullAccess
